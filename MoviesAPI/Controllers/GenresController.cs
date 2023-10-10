@@ -37,6 +37,13 @@ namespace MoviesAPI.Controllers
             return _mapper.Map<List<GenreDTO>>(genres);
         }
 
+        [HttpGet("all")]
+        public async Task<ActionResult<List<GenreDTO>>> Get()
+        {
+            var genres = await _context.Genres.OrderBy(x => x.Name).ToListAsync();
+            return _mapper.Map<List<GenreDTO>>(genres);
+        }
+
         [HttpGet("{Id:int}")]
         public async Task<ActionResult<GenreDTO>> Get(int id)
         {
@@ -78,9 +85,9 @@ namespace MoviesAPI.Controllers
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var exists = await _context.Genres.AnyAsync(x => x.Id == id);
+            var genre = await _context.Genres.AnyAsync(x => x.Id == id);
 
-            if (exists == null)
+            if (genre == null)
             {
                 return NotFound();
             }

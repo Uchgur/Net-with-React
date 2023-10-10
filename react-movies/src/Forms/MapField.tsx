@@ -1,15 +1,16 @@
 import { useFormikContext } from 'formik';
-import { coordinateDTO } from '../utils/Coordinates.model';
+import coordinateDTO from '../utils/Coordinates.model';
 import Map from '../utils/Map';
 
-export default function MapField(props: mapFieldProps) {
+export default function MapField(props: mapFieldProps){
+
     const {values} = useFormikContext<any>();
-    
-    function handleMapClick(coordinates: coordinateDTO) {
+
+    function handleMapClick(coordinates: coordinateDTO){
         values[props.latField] = coordinates.lat;
         values[props.lngField] = coordinates.lng;
     }
-    
+
     return (
         <Map
             coordinates={props.coordinates}
@@ -18,7 +19,7 @@ export default function MapField(props: mapFieldProps) {
     )
 }
 
-interface mapFieldProps {
+interface mapFieldProps{
     coordinates: coordinateDTO[];
     latField: string;
     lngField: string;

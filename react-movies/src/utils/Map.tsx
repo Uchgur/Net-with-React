@@ -1,9 +1,9 @@
-import { MapContainer, TileLayer, useMapEvent, Marker } from "react-leaflet";
+import { MapContainer, TileLayer, useMapEvent, Marker, Popup } from "react-leaflet"
 import L from 'leaflet';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import 'leaflet/dist/leaflet.css';
-import { coordinateDTO } from "./Coordinates.model";
+import coordinateDTO from './Coordinates.model'
 import { useState } from "react";
 
 let defaultIcon = L.icon({
@@ -16,18 +16,25 @@ L.Marker.prototype.options.icon = defaultIcon;
 
 export default function Map(props: mapProps) {
     const [coordinates, setCoordinates] = useState<coordinateDTO[]>(props.coordinates);
-
-    return(
+    return (
         <MapContainer
-            center={[53.90024100845827, 27.559078438180233]} zoom={14}
-            style={{height: props.height}}
+            center={[53.904698154388065, 27.554283105819028]} zoom={14}
+            style={{ height: props.height }}
         >
-            <TileLayer attribution="React Movies" url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
-            <MapClick setCoordinates={coordinates => {
+            <TileLayer attribution="React Movies"
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            {props.readOnly ? null :  <MapClick setCoordinates={coordinates => {
                 setCoordinates([coordinates]);
                 props.handleMapClick(coordinates);
-            }} />
-            {coordinates.map((coordinate, index) => <Marker key={index} position ={[coordinate.lat, coordinate.lng]} />)}
+            }} />}
+           
+            {coordinates.map((coordinate, index) => <Marker key={index}
+                position={[coordinate.lat, coordinate.lng]}>
+                    {coordinate.name ? <Popup>
+                        {coordinate.name}
+                    </Popup> : null}
+                </Marker>)}
         </MapContainer>
     )
 }
@@ -35,20 +42,23 @@ export default function Map(props: mapProps) {
 interface mapProps {
     height: string;
     coordinates: coordinateDTO[];
-    handleMapClick(coordinates: coordinateDTO) : void;
+    handleMapClick(coordinates: coordinateDTO): void,
+    readOnly: boolean
 }
 
 Map.defaultProps = {
-    height: '500px'
+    height: '500px',
+    handleMapClick: () => {},
+    readOnly: false
 }
 
 function MapClick(props: mapClickProps) {
     useMapEvent('click', eventArgs => {
-        props.setCoordinates({lat: eventArgs.latlng.lat, lng: eventArgs.latlng.lng})
+        props.setCoordinates({ lat: eventArgs.latlng.lat, lng: eventArgs.latlng.lng })
     })
     return null;
 }
 
 interface mapClickProps {
-    setCoordinates(coordinates: coordinateDTO): void
+    setCoordinates(coordinates: coordinateDTO): void;
 }

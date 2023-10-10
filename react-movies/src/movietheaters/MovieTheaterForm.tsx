@@ -6,12 +6,12 @@ import { movieTheaterCreationDTO } from "./MovieTheater.model";
 import * as Yup from 'yup';
 import Map from '../utils/Map';
 import MapField from "../Forms/MapField";
-import { coordinateDTO } from "../utils/Coordinates.model";
+import coordinateDTO from "../utils/Coordinates.model";
 
 export default function MovieTheaterForm(props: movieTeaterFormProps) {
     function transformCoordinates(): coordinateDTO[] | undefined {
-        if(props.model.latitude && props.model.longtitude) {
-            const response: coordinateDTO = {lat: props.model.latitude, lng: props.model.longtitude}
+        if(props.model.latitude && props.model.longitude) {
+            const response: coordinateDTO = {lat: props.model.latitude, lng: props.model.longitude}
             return [response];
         }
 

@@ -16,16 +16,12 @@ export default function EditActor(){
     }
 
     return (
-        <EditEntity<actorCreationDTO, actorDTO> 
-         url={URLActors} indexURL="/actors" entityName="Actor" 
-        //  transformFormData={convertActorToFormData}
-         transform={transform}
+        <EditEntity<actorCreationDTO, actorDTO>
+            url={URLActors} indexURL='/actors' entityName='Actor' transformFormData={convertActorToFormData}
+            transform={transform}
         >
             {(entity, edit) => 
-                <ActorForm 
-                    model={entity}
-                    onSubmit={async values => await edit(values)}
-                />
+                <ActorForm model={entity} onSubmit={async values => await edit(values)}/>
             }
         </EditEntity>
     )

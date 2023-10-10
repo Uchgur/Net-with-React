@@ -80,3 +80,8 @@ D:\Курсы\NET with React\MoviesAPI\bin\Debug\net7.0\AutoMapper.Extensions.Mi
 D:\Курсы\NET with React\MoviesAPI\bin\Debug\net7.0\Azure.Storage.Blobs.dll
 D:\Курсы\NET with React\MoviesAPI\bin\Debug\net7.0\Azure.Storage.Common.dll
 D:\Курсы\NET with React\MoviesAPI\bin\Debug\net7.0\System.IO.Hashing.dll
+D:\Курсы\NET with React\MoviesAPI\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite.dll
+D:\Курсы\NET with React\MoviesAPI\bin\Debug\net7.0\NetTopologySuite.dll
+D:\Курсы\NET with React\MoviesAPI\bin\Debug\net7.0\NetTopologySuite.IO.SqlServerBytes.dll
+D:\Курсы\NET with React\MoviesAPI\obj\Debug\net7.0\EFCoreSqlServerNetTopologySuite.cs
+D:\Курсы\NET with React\MoviesAPI\bin\Debug\net7.0\Newtonsoft.Json.dll

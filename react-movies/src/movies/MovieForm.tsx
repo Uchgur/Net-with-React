@@ -11,8 +11,9 @@ import MultipleSelector, { multipleSelectorModel } from "../Forms/MultipleSelect
 import { useState } from "react";
 import { genreDTO } from "../genres/Genres.model";
 import { movieTheaterDTO } from "../movietheaters/MovieTheater.model";
-import TYpeAheadActors from "../Forms/TypeAheadActors";
+import TypeAheadActors from "../Forms/TypeAheadActors";
 import { actorMovieDTO } from "../actors/Actors.model";
+import MarkdownField from "../Forms/MarkdownField";
 
 export default function MovieForm(props: movieFormProps) {
     const [selectedGenres, setSelectedGenres] = useState(mapToModel(props.selectedGenres));
@@ -49,6 +50,8 @@ export default function MovieForm(props: movieFormProps) {
                     <DateField displayName="Release Date" field="releaseDate" />
                     <ImageField displayName="Poster" field="poster" imageURL={props.model.posterURL} />
 
+                    <MarkdownField displayName="Summary" field="summary" />
+
                     <MultipleSelector displayName="Genres" nonSelected={nonSelectedGenres} selected={selectedGenres}
                         onChange={(selected, nonSelected) => {
                             setSelectedGenres(selected);
@@ -61,7 +64,7 @@ export default function MovieForm(props: movieFormProps) {
                             setNonSelectedMovieTheaters(nonSelected);
                     }} />
 
-                    <TYpeAheadActors displayName="Actors" actors={selectedActors}
+                    <TypeAheadActors displayName="Actors" actors={selectedActors}
                         onAdd={actors => {
                             setSelectedActors(actors);
                         }}
