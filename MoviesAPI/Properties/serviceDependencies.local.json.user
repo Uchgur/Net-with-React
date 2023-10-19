@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2023-10-17T15:17:08.7259696Z"
+    },
+    "appInsights1": {
+      "restored": true,
+      "restoreTime": "2023-10-17T15:17:12.9811919Z"
+    }
+  },
+  "parameters": {
+    "appInsights1.resourceGroupName": {
+      "Name": "appInsights1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "MoviesAPI"
+    },
+    "appInsights1.subscriptionId": {
+      "Name": "appInsights1.subscriptionId",
+      "Type": "subscription",
+      "Value": "daae2b47-25d4-43be-8104-35378ac295bd"
+    }
+  }
+}
